@@ -1,0 +1,17 @@
+ext {
+
+    // Android
+    compileSdk =  27
+    minSdk =  19
+    targetSdk =  27
+    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    androidSupportLibVersion = "27.1.1"
+
+    //Libs
+    rxJava = "io.reactivex.rxjava2:rxjava:2.1.6"
+
+    // Testing
+    junitJupiterVersion = "5.2.0"
+    mockitoKotlin = "com.nhaarman:mockito-kotlin:1.5.0"
+    androidTestRunner = "com.android.support.test:runner:1.0.2"
+}
