@@ -8,9 +8,11 @@ buildscript {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
     }
+
     dependencies {
-        classpath "com.android.tools.build:gradle:3.2.0-alpha13"
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha16'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.32"
     }
@@ -22,6 +24,7 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
     }
 }
 
