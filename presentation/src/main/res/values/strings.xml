@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">presentation</string>
+    <string name="app_name">VKDOC</string>
+    <string name="logout">Logout</string>
+
+
+
+    <integer name="com_vk_sdk_AppId">6456790</integer>
 </resources>
