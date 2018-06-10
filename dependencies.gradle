@@ -6,7 +6,7 @@ ext {
     targetSdk =  27
     testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     androidSupportLibVersion = "27.1.1"
-
+    roomVersion = "1.1.0"
     //Libs
     rxJava = "io.reactivex.rxjava2:rxjava:2.1.6"
 

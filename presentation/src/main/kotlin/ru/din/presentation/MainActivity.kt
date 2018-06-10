@@ -3,18 +3,49 @@ package ru.din.presentation
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import android.widget.Toast
+import com.vk.sdk.VKAccessToken
+import com.vk.sdk.VKCallback
 import com.vk.sdk.VKSdk
-import kotlinx.android.synthetic.main.activity_main.*
-
+import com.vk.sdk.api.VKError
+import kotlinx.android.synthetic.main.fragment_docs.*
+import ru.din.presentation.docs.DocsFragment
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        logout_button.setOnClickListener {
-            VKSdk.logout()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+  private val TAG = "MainActivity"
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    Log.d(TAG, "Main 1")
+    if (savedInstanceState == null) {
+      Log.d(TAG, "Main 2")
+      supportFragmentManager.beginTransaction()
+          .replace(R.id.container, DocsFragment(), "docs")
+          .commitNow()
+      title = getString(R.string.app_name)
     }
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    val vkCallback: VKCallback<VKAccessToken> = object : VKCallback<VKAccessToken> {
+      override fun onResult(res: VKAccessToken) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, DocsFragment(), "docs")
+            .commitNow()
+        title = getString(R.string.app_name)
+      }
+
+      override fun onError(error: VKError) {
+        val s = "Авторизация не пройдена, данные ошибки: ${error.errorCode}/${error.errorMessage}/${error.errorReason}"
+        Log.d(TAG, s)
+        Toast.makeText(this@MainActivity, s, Toast.LENGTH_LONG).show()
+      }
+    }
+
+    if (!VKSdk.onActivityResult(requestCode, resultCode, data, vkCallback)) {
+      super.onActivityResult(requestCode, resultCode, data)
+    }
+  }
 }
