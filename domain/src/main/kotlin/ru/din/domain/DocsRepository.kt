@@ -4,5 +4,5 @@ import io.reactivex.Observable
 import ru.din.domain.entities.DocEntity
 
 interface DocsRepository {
-  fun getDocs(): Observable<List<DocEntity>>
+  fun getDocs(data: Map<String, Any>?): Observable<List<DocEntity>>
 }

@@ -10,6 +10,8 @@ class DocEntityItemMapper : Mapper<DocEntity, DocItem>() {
     return DocItem(
         ext = from.ext,
         date = from.date,
+        //TODO раскоментировать когда будет понятно как сохранять связанные объекты в Room
+
 /*
         preview = from.preview,
 */

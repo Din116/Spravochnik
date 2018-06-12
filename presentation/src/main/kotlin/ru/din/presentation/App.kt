@@ -1,4 +1,4 @@
-package ru.din.presentation.common
+package ru.din.presentation
 
 import android.app.Application
 import android.content.Intent
@@ -7,7 +7,9 @@ import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKAccessTokenTracker
 import com.vk.sdk.VKSdk
 import org.koin.android.ext.android.startKoin
-import ru.din.presentation.LoginActivity
+import ru.din.presentation.di.dataModule
+import ru.din.presentation.di.docsModule
+import ru.din.presentation.di.networkModule
 
 class App : Application() {
   var vkAccessTokenTracker: VKAccessTokenTracker = object : VKAccessTokenTracker() {
@@ -23,7 +25,7 @@ class App : Application() {
     super.onCreate()
     vkAccessTokenTracker.startTracking()
     VKSdk.initialize(this)
-    startKoin(this, listOf())
+    startKoin(this, listOf(docsModule, dataModule, networkModule))
   }
 
 }

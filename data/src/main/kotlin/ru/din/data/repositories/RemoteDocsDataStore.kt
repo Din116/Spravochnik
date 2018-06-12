@@ -12,13 +12,8 @@ class RemoteDocsDataStore(private val api: Api,
                           private val docDataMapper: Mapper<DocItem, DocEntity>) : DocsDataStore {
 
   override fun getDocs(): Observable<List<DocEntity>> {
-    return api.getDocs(VKAccessToken.currentToken().userId, VERSION_API, VKAccessToken.currentToken().accessToken).map { results ->
-      results.items.map { docDataMapper.mapFrom(it) }
+    return api.getDocs(VKAccessToken.currentToken().userId, "5.78", VKAccessToken.currentToken().accessToken).map { results ->
+      results.response.items.map { docDataMapper.mapFrom(it) }
     }
   }
-
-  companion object {
-    private const val VERSION_API: String = "5.78"
-  }
-
 }

@@ -10,5 +10,4 @@ class CachedDocsDataStore(private val docsCache: DocsCache) : DocsDataStore {
   override fun getDocs(): Observable<List<DocEntity>> {
     return docsCache.getAll()
   }
-
 }

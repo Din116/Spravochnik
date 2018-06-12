@@ -21,9 +21,9 @@ class DocsRepositoryImpl(api: Api,
     remoteDataStore = RemoteDocsDataStore(api, docDataMapper)
   }
 
-  override fun getDocs(): Observable<List<DocEntity>> {
+  override fun getDocs(data: Map<String, Any>?): Observable<List<DocEntity>> {
     return cache.isEmpty().flatMap { empty ->
-      if (!empty) {
+      if (!(data?.get("nocache") as Boolean) && !empty) {
         return@flatMap memoryDataStore.getDocs()
       } else {
         return@flatMap remoteDataStore.getDocs().doOnNext { cache.saveAll(it) }
