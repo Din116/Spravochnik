@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
-    <Button
+<!--    <Button
         android:id="@+id/logout_button"
         android:layout_width="54dp"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="19dp"
         android:layout_marginBottom="18dp"
-        android:text="@string/logout" />
+        android:text="@string/logout" />-->
 
 </RelativeLayout>
 

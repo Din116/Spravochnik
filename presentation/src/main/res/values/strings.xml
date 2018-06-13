@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">VKDOC</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Выход</string>
     <string name="preview_image">preview</string>
+    <string name="docs_screen">Документы</string>
+    <string name="info_screen">Информация</string>
+    <string name="action_docs">Документы</string>
+    <string name="action_info">Информация</string>
 
     <integer name="com_vk_sdk_AppId">6456790</integer>
 </resources>

@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_docs"
+        android:title="@string/action_docs"
+        android:icon="@drawable/ic_close_white_24dp"
+        />
+
+
+    <item
+        android:id="@+id/action_info"
+        android:title="@string/action_info"
+        android:icon="@drawable/ic_close_white_24dp"
+        />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/logout"
+        android:icon="@drawable/ic_close_white_24dp"
+        />
+</menu>

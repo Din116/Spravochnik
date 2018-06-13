@@ -1,7 +1,6 @@
 package ru.din.presentation.docs
 
 import android.arch.lifecycle.Observer
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
@@ -13,11 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.vk.sdk.VKSdk
 import kotlinx.android.synthetic.main.fragment_docs.*
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.android.inject
-import ru.din.presentation.LoginActivity
 import ru.din.presentation.R
 import ru.din.presentation.common.ImageLoader
 
@@ -80,11 +77,11 @@ class DocsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     recyclerView.layoutManager = GridLayoutManager(activity, 1)
     recyclerView.adapter = docsAdapter
 
-    logout_button.setOnClickListener {
+/*    logout_button.setOnClickListener {
       VKSdk.logout()
       startActivity(Intent(this@DocsFragment.context, LoginActivity::class.java))
       activity?.finish()
-    }
+    }*/
 
   }
 
