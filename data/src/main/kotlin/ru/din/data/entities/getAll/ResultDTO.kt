@@ -2,7 +2,7 @@ package ru.din.data.entities.getAll
 
 import com.google.gson.annotations.SerializedName
 
-class Result {
+class ResultDTO {
   @field:SerializedName("response")
-  lateinit var response: Response
+  lateinit var response: ResponseDTO
 }

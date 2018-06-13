@@ -2,8 +2,7 @@ package ru.din.data.entities.getAll
 
 import com.google.gson.annotations.SerializedName
 
-data class SizesItem(
-
+data class SizesItemDTO(
     @field:SerializedName("src")
     val src: String? = null,
 

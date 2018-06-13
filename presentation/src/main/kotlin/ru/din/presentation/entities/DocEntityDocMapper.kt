@@ -1,19 +1,15 @@
 package ru.din.presentation.entities
 
 import ru.din.domain.common.Mapper
-import ru.din.domain.entities.DocEntity
+import ru.din.domain.entities.DocVO
 
-class DocEntityDocMapper : Mapper<DocEntity, Doc>() {
+class DocEntityDocMapper : Mapper<DocVO, Doc>() {
 
-  override fun mapFrom(from: DocEntity): Doc {
+  override fun mapFrom(from: DocVO): Doc {
     return Doc(
         ext = from.ext,
         date = from.date,
-        //TODO раскоментировать когда будет понятно как сохранять связанные объекты в Room
-
-/*
-        preview = from.preview,
-*/
+        preview = from.preview?.let { it.photo?.sizes?.firstOrNull { "s" == it?.type }?.src },
         size = from.size,
         ownerId = from.ownerId,
         id = from.id,

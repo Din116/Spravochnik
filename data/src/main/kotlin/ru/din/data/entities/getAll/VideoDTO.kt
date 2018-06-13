@@ -1,10 +1,11 @@
 package ru.din.data.entities.getAll
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import com.google.gson.annotations.SerializedName
 
 @Entity
-data class Video(
+data class VideoDTO(
 
     @field:SerializedName("src")
     val src: String? = null,
@@ -17,4 +18,7 @@ data class Video(
 
     @field:SerializedName("height")
     val height: Int? = null
-)
+) {
+  @Ignore
+  constructor() : this("", 0, 0, 0)
+}

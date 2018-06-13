@@ -1,23 +1,23 @@
 package ru.din.data.entities.getAll
 
+import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
-import android.arch.persistence.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import ru.din.data.entities.PreviewConverters
 
 @Entity(tableName = "docs")
-@TypeConverters(PreviewConverters::class)
-data class DocItem(
+data class DocDTO(
 
     @field:SerializedName("ext")
     val ext: String? = null,
 
     @field:SerializedName("date")
     val date: Int? = null,
-    //TODO раскоментировать когда будет понятно как сохранять связанные объекты в Room
-/*    @field:SerializedName("preview")
-    val preview: Preview? = null,*/
+
+    @Embedded
+    @field:SerializedName("preview")
+    val preview: PreviewDTO? = null,
 
     @field:SerializedName("size")
     val size: Int? = null,
@@ -38,4 +38,7 @@ data class DocItem(
 
     @field:SerializedName("url")
     val url: String? = null
-)
+) {
+    @Ignore
+    constructor() : this("", 0, PreviewDTO(), 0, 0, -1, "", 0, "")
+}

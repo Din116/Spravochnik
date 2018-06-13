@@ -42,13 +42,16 @@ class DocsAdapter constructor(private val imageLoader: ImageLoader,
   class DocCellViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(doc: Doc, imageLoader: ImageLoader, listener: (Doc, View) -> Unit) = with(itemView) {
       docCellTitle.text = doc.title
+/*
       val myDrawable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         resources.getDrawable(R.drawable.logo_24dp, context.theme)
       } else {
         resources.getDrawable(R.drawable.logo_24dp)
       }
       docCellImage.setImageDrawable(myDrawable)
-      //doc.type?.let { imageLoader.load(it, docCellImage) }
+*/
+      docCellImage.setImageResource(R.drawable.logo_24dp)
+      doc.preview?.let { imageLoader.load(it, docCellImage) }
       setOnClickListener { listener(doc, itemView) }
     }
 

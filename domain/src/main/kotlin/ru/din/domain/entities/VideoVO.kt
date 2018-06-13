@@ -1,8 +1,8 @@
 package ru.din.domain.entities
 
-data class SizesItem(
+data class VideoVO(
     val src: String? = null,
     val width: Int? = null,
-    val type: String? = null,
+    val fileSize: Int? = null,
     val height: Int? = null
 )

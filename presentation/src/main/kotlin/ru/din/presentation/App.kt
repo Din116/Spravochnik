@@ -12,7 +12,7 @@ import ru.din.presentation.di.docsModule
 import ru.din.presentation.di.networkModule
 
 class App : Application() {
-  var vkAccessTokenTracker: VKAccessTokenTracker = object : VKAccessTokenTracker() {
+  private var vkAccessTokenTracker: VKAccessTokenTracker = object : VKAccessTokenTracker() {
     override fun onVKAccessTokenChanged(oldToken: VKAccessToken?, newToken: VKAccessToken?) {
       if (newToken == null) {
         startActivity(Intent(applicationContext, LoginActivity::class.java).addFlags(FLAG_ACTIVITY_NEW_TASK))
