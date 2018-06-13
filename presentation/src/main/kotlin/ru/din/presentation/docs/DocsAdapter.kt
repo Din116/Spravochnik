@@ -1,6 +1,5 @@
 package ru.din.presentation.docs
 
-import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import kotlinx.android.synthetic.main.docs_adapter_cell.view.*
 import ru.din.presentation.R
 import ru.din.presentation.common.ImageLoader
 import ru.din.presentation.entities.Doc
+import java.text.DecimalFormat
 
 
 class DocsAdapter constructor(private val imageLoader: ImageLoader,
@@ -40,20 +40,21 @@ class DocsAdapter constructor(private val imageLoader: ImageLoader,
   }
 
   class DocCellViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    private fun getFileSize(size: Long?): String {
+      if (size == null || size <= 0)
+        return "0"
+      val units = arrayOf("B", "KB", "MB", "GB", "TB")
+      val digitGroups = (Math.log10(size.toDouble()) / Math.log10(1024.0)).toInt()
+      return DecimalFormat("#,##0.#").format(size / Math.pow(1024.0, digitGroups.toDouble())) + " " + units[digitGroups]
+    }
+
     fun bind(doc: Doc, imageLoader: ImageLoader, listener: (Doc, View) -> Unit) = with(itemView) {
       docCellTitle.text = doc.title
-/*
-      val myDrawable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        resources.getDrawable(R.drawable.logo_24dp, context.theme)
-      } else {
-        resources.getDrawable(R.drawable.logo_24dp)
-      }
-      docCellImage.setImageDrawable(myDrawable)
-*/
+      docCellMeta.text = getFileSize(doc.size?.toLong())
       docCellImage.setImageResource(R.drawable.logo_24dp)
       doc.preview?.let { imageLoader.load(it, docCellImage) }
       setOnClickListener { listener(doc, itemView) }
     }
-
   }
 }
