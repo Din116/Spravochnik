@@ -3,7 +3,7 @@ package ru.din.presentation.entities
 import ru.din.domain.common.Mapper
 import ru.din.domain.entities.DocVO
 
-class DocEntityDocMapper : Mapper<DocVO, Doc>() {
+class DocVODocMapper : Mapper<DocVO, Doc>() {
 
   override fun mapFrom(from: DocVO): Doc {
     return Doc(

@@ -6,7 +6,7 @@ import android.arch.persistence.room.TypeConverters
 import ru.din.data.entities.Converters
 import ru.din.data.entities.getAll.DocDTO
 
-@Database(entities = [(DocDTO::class)], version = 2, exportSchema = false)
+@Database(entities = [(DocDTO::class)], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class DocsDatabase : RoomDatabase() {
   abstract fun getDocsDao(): DocsDao

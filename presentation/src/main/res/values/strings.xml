@@ -3,9 +3,10 @@
     <string name="logout">Выход</string>
     <string name="preview_image">preview</string>
     <string name="docs_screen">Документы</string>
-    <string name="info_screen">Информация</string>
     <string name="action_docs">Документы</string>
-    <string name="action_info">Информация</string>
+
+    <string name="info_screen">Информация</string>
+    <string name="action_info">Языки</string>
 
     <integer name="com_vk_sdk_AppId">6456790</integer>
 </resources>

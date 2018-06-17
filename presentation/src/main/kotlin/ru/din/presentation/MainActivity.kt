@@ -54,12 +54,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
   }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
-    Log.e(TAG, "onNavigationItemSelected 1")
     if (item.itemId == navigationBar.selectedItemId) {
-      Log.e(TAG, "onNavigationItemSelected 3")
       return false
     }
-    Log.e(TAG, "onNavigationItemSelected 2")
     when (item.itemId) {
       R.id.action_docs -> {
         supportFragmentManager.beginTransaction()

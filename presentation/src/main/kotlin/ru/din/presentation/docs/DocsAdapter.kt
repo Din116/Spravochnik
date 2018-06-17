@@ -8,7 +8,10 @@ import kotlinx.android.synthetic.main.docs_adapter_cell.view.*
 import ru.din.presentation.R
 import ru.din.presentation.common.ImageLoader
 import ru.din.presentation.entities.Doc
+import java.text.DateFormatSymbols
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DocsAdapter constructor(private val imageLoader: ImageLoader,
@@ -35,12 +38,11 @@ class DocsAdapter constructor(private val imageLoader: ImageLoader,
 
   fun addDoc(docs: List<Doc>) {
     this.docs.clear()
-    this.docs.addAll(docs)
+    this.docs.addAll(docs.sortedBy { it.date })
     notifyDataSetChanged()
   }
 
   class DocCellViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     private fun getFileSize(size: Long?): String {
       if (size == null || size <= 0)
         return "0"
@@ -51,7 +53,13 @@ class DocsAdapter constructor(private val imageLoader: ImageLoader,
 
     fun bind(doc: Doc, imageLoader: ImageLoader, listener: (Doc, View) -> Unit) = with(itemView) {
       docCellTitle.text = doc.title
-      docCellMeta.text = getFileSize(doc.size?.toLong())
+      val dfs = DateFormatSymbols()
+      dfs.months = arrayOf("января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря")
+      docCellDate.text = doc.date?.let {
+        SimpleDateFormat("dd MMMM yyyy", dfs).format(Date(it.toLong()*1000)) +
+            " в " +
+            SimpleDateFormat("HH:mm", dfs).format(Date(it.toLong()*1000)) }
+      docCellSize.text = getFileSize(doc.size?.toLong())
       docCellImage.setImageResource(R.drawable.logo_24dp)
       doc.preview?.let { imageLoader.load(it, docCellImage) }
       setOnClickListener { listener(doc, itemView) }

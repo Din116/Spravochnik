@@ -9,5 +9,6 @@ data class DocVO(
     val id: Int = 0,
     val title: String,
     val type: Int? = null,
-    val url: String? = null
+    val url: String? = null,
+    val urlLocal: String? = null
 )

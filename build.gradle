@@ -2,7 +2,7 @@ apply from: 'dependencies.gradle'
 apply plugin: 'kotlin'
 
 buildscript {
-    ext.kotlinVersion = "1.2.41"
+    ext.kotlinVersion = "1.2.50"
     repositories {
         google()
         mavenCentral()

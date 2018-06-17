@@ -12,6 +12,6 @@ import ru.din.presentation.docs.DocsViewModel
 
 val docsModule = applicationContext {
   bean { GetDocs(ASyncTransformer(), get()) }
-  viewModel { DocsViewModel(get(), get("DocEntityDocMapper")) }
+  viewModel { DocsViewModel(get(), get("DocVODocMapper")) }
   bean { PicassoImageLoader(Picasso.with(androidApplication())) as ImageLoader }
 }

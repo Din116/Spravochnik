@@ -17,7 +17,7 @@ import ru.din.domain.DocsRepository
 import ru.din.domain.common.Mapper
 import ru.din.domain.entities.*
 import ru.din.presentation.entities.Doc
-import ru.din.presentation.entities.DocEntityDocMapper
+import ru.din.presentation.entities.DocVODocMapper
 
 val dataModule = applicationContext {
   bean { Room.databaseBuilder(androidApplication(), DocsDatabase::class.java, "docs_db").fallbackToDestructiveMigration().build() }
@@ -31,7 +31,7 @@ val dataModule = applicationContext {
   bean("PreviewDTOToVOMapper") { PreviewDTOToVOMapper(get("PhotoDTOToVOMapper"), get("VideoDTOToVOMapper")) as Mapper<PreviewDTO, PreviewVO> }
   bean("DocVOToDTOMapper") { DocVOToDTOMapper(get("PreviewVOToDTOMapper")) as Mapper<DocVO, DocDTO> }
   bean("DocDTOToVOMapper") { DocDTOToVOMapper(get("PreviewDTOToVOMapper")) as Mapper<DocDTO, DocVO> }
-  bean("DocEntityDocMapper") { DocEntityDocMapper() as Mapper<DocVO, Doc> }
+  bean("DocVODocMapper") { DocVODocMapper() as Mapper<DocVO, Doc> }
   bean { DocsRepositoryImpl(get(), get(), get("DocDTOToVOMapper")) as DocsRepository }
   bean { MemoryDocsCache() as DocsCache }
   bean { RoomDocCache(get(), get("DocVOToDTOMapper"), get("DocDTOToVOMapper")) as DocsCache }

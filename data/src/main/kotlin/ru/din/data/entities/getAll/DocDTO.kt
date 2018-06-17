@@ -37,8 +37,11 @@ data class DocDTO(
     val type: Int? = null,
 
     @field:SerializedName("url")
-    val url: String? = null
+    val url: String? = null,
+
+    @field:SerializedName("urlLocal")
+    val urlLocal: String? = null
 ) {
     @Ignore
-    constructor() : this("", 0, PreviewDTO(), 0, 0, -1, "", 0, "")
+    constructor() : this("", 0, PreviewDTO(), 0, 0, -1, "", 0, "", "")
 }

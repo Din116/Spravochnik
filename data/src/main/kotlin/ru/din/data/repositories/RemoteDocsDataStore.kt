@@ -8,6 +8,7 @@ import ru.din.domain.DocsDataStore
 import ru.din.domain.common.Mapper
 import ru.din.domain.entities.DocVO
 
+
 class RemoteDocsDataStore(private val api: Api,
                           private val docDataMapper: Mapper<DocDTO, DocVO>) : DocsDataStore {
 
